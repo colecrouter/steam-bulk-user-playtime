@@ -3,7 +3,7 @@ It does just what the title says it does. Use it to get the total playtime of mu
 
 ### How to use
 Download and place the PHP file on your site. Then, just access it like you normally would. You can run the code in either GET or POST, but formatting arrays in GET is hard, so POST is recommended. You must send three things in the payload:
-1. `"key"` - Your Steam API key (you can get one from [here](https://steamcommunity.com/dev/registerkey))
+1. `"key"` - Your Steam API key (you can get one from [here](https://steamcommunity.com/dev/apikey))
 2. `"users"` - Array of users' Steam IDs you want to check (you can find their IDs [here](https://steamid.io/lookup))
 3.  `"games"` - Array of AppIDs (games) you want to check (you can find a game's ID [here](https://steamdb.info/))
 
