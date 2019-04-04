@@ -33,15 +33,18 @@ for ($i = 0; $i < sizeof($games); $i++) {
 }
 
 // Check stats for each player in $users
-foreach ($users as &$no) {
-	$ch = curl_init('http://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=' . $key .'&steamid=' . $no . '&format=json' . $gamesUrl);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	$data = json_decode(curl_exec($ch), true);
-	foreach ($data['response']['games'] as $game) {
-		$total += $game['playtime_forever'];
+if (isset($data['response']['games'])) {
+	foreach ($users as &$no) {
+		$ch = curl_init('http://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=' . $key .'&steamid=' . $no . '&format=json' . $gamesUrl);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$data = json_decode(curl_exec($ch), true);
+		foreach ($data['response']['games'] as $game) {
+			$total += $game['playtime_forever'];
+		}
+		curl_close($ch);
 	}
-	curl_close($ch);
 }
+
 
 // Returns total
 echo $total;
